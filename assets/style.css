@@ -1,0 +1,183 @@
+@font-face {
+  font-family: 'Linux Biolinum';
+  font-style: normal;
+  src: 
+    url('./fonts/LinBiolinum.woff') format('woff'),
+}
+
+@font-face {
+  font-family: 'Linux Libertine';
+  font-style: normal;
+  src: 
+    url('./fonts/LinLibertine.woff') format('woff'),
+}
+
+
+body {
+  /*font-family: 'Linux Biolinum', sans-serif;*/
+  /*font-family: 'Linux Libertine','Times New Roman', sans-serif;*/
+  font-family: sans-serif;
+  font-size: 15px;
+  /*--theme-color: #4e71be;*/
+  /*--theme-color: #43B7F3;*/
+  --theme-color: #439CF3;
+  --theme-color-hover: #00cccc30;
+  --theme-color-focus: #00cccc60;
+}
+
+@media (min-width: 387px) {
+  .container-small {
+    width: 387px;
+  }
+}
+@media (min-width: 576px) {
+  .container-small {
+    width: 540px;
+  }
+}
+@media (min-width: 768px) {
+  .container-small {
+    width: 700px;
+  }
+}
+@media (min-width: 992px) {
+  .container-small {
+    width: 900px;
+  }
+}
+@media (min-width: 1200px) {
+	.container-small {
+		width: 1000px;
+	}
+}
+@media (max-width: 576px) {
+  .teaser-title {
+    font-size: 10px;
+  }
+}
+
+.container-small {
+	max-width: 100%;
+}
+
+.text-justify {
+    font-size: 18px; /* 这里设置所需的字体大小，可以根据需要调整 */
+}
+.teaser-title{
+    font-size: 18px; /* 这里设置所需的字体大小，可以根据需要调整 */
+}
+.text-siggraph{
+  color: #D59F73
+}
+
+
+a {
+  color: var(--theme-color);
+  text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+a.author, a.title {
+  color: inherit;
+}
+
+h2, h4, h5, h6 {
+  font-weight: bolder;
+}
+.btn {
+  border-radius: 0.5em;
+  transition: 0.2s;
+}
+.btn:hover {
+  text-decoration: none;
+  border-color: var(--theme-color);
+  background-color: var(--theme-color);
+}
+.btn-sm {
+  padding: 2px 6px;
+  border-radius: 0.3em;
+}
+
+.hover-icon {
+  transition: 0.2s;
+}
+.hover-icon:hover {
+	transform:scale(1.2);
+}
+
+.hover-profile {
+  transition: 0.3s;
+}
+.hover-profile:hover {
+  box-shadow: 10px 10px 10px var(--theme-color-hover);
+  transform: translate(-10px, -10px);
+}
+.rotated {
+  transform: rotateY(180deg);
+}
+.rotated:hover {
+  box-shadow: -10px 10px 10px var(--theme-color-hover);
+  transform: translate(-10px, -10px) rotateY(180deg);
+}
+
+.hover-img {
+  transition: 0.3s;
+}
+.hover-img:hover {
+  transform: scale(1.05);
+/*  box-shadow: 0 0 10px rgba(0, 204, 204, 0.3);*/
+}
+
+.fade-down {
+  animation: fadeDown 1s ease;
+}
+@keyframes fadeDown {
+  0% { opacity: 0; transform: translateY(-80px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.fade-left {
+  animation: fadeLeft 1s ease;
+}
+@keyframes fadeLeft {
+  0% { opacity: 0; transform: translateX(80px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+.popover-delay {
+  animation: fadeInDelay 1.5s ease;
+}
+@keyframes fadeInDelay {
+  0% { opacity: 0; }
+  30% { opacity: 0 }
+  100% { opacity: 1; }
+}
+
+.btn-close:focus {
+  box-shadow: 0 0 0 0.25rem var(--theme-color-focus);
+}
+
+iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+.layered-paper-big { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+  box-shadow:
+          0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
+          5px 5px 0 0px #fff, /* The second layer */
+          5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
+          10px 10px 0 0px #fff, /* The third layer */
+          10px 10px 1px 1px rgba(0,0,0,0.35); /* The third layer shadow */
+  margin-left: 10px;
+  margin-right: 45px;
+}
+pre {
+  font-size: 13px;
+  padding: 1.5em 1.5em;
+  border-radius: 0.5em;
+}
+.bibtex-light {
+  background-color: #f5f5f5;
+}
+.bibtex-dark {
+  background-color: #4e4e4e;
+}

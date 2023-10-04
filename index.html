@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<base target="_blank">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./fonts/LinLibertine.woff">
+    <link rel="stylesheet" type="text/css" href="./fonts/LinBiolinum.woff">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+		<link rel="stylesheet" href="./assets/style.css">
+		<link rel="icon" type="image/x-icon" href="./figs/duck_icon.png">
+
+		<title>DiffFR: Differentiable SPH-based Fluid-Rigid Coupling for Rigid Body Control</title>
+
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23662412-4"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'UA-23662412-4');
+		</script>
+
+		<script src="https://kit.fontawesome.com/13cb060381.js" crossorigin="anonymous"></script>
+		<script src="https://code.jquery.com/jquery-3.7.0.js" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+	</head>
+
+	<body>
+
+  <!-- ------------------------------------ Heroes -------------------------------------------->
+		<div class="container container-small pb-5">
+			<div class="row pt-4 pb-3 justify-content-center">
+				<div class="col-12 pt-1">
+					<h1 class="text-center mb-4">DiffFR: Differentiable SPH-based Fluid-Rigid Coupling for Rigid Body Control</h1>
+					<div class="text-center font-weight-normal h4">
+            <a class='pr-4', href="https://zhehaoli1999.github.io"> Zhehao Li </a> <sup> 1</sup>&nbsp;&nbsp;
+            Qingyu Xu <sup> 1</sup>&nbsp;&nbsp;
+            Xiaohan Ye <sup> 2 </sup>&nbsp;&nbsp;
+            <a href="http://ren-bo.net/"> Bo Ren </a> <sup> 2</sup>&nbsp;&nbsp;
+            <a href="http://staff.ustc.edu.cn/~lgliu/">Ligang Liu</a><sup>1</sup> &nbsp;
+					</div>
+					<div class="text-center font-weight-normal h5 pt-1">
+            <sup>1</sup> <a href="http://en.ustc.edu.cn/">University of Science and Technology of China</a> &nbsp;&nbsp;&nbsp;
+            <br>
+            <sup>2</sup> <a href="https://cc.nankai.edu.cn/"> TMCC, College of Computer Science, Nankai University</a> &nbsp;&nbsp;&nbsp;
+					</div>
+					<div class="text-center font-weight-normal h5 pt-2">
+            <a href="https://asia.siggraph.org/2023/", style="color: #ED7D31">ACM Transactions on Graphics (Proceedings of SIGGGRAPH Asia 2023)</a>
+            <!--<div class="asia-conference"><a title="SIGGRAPH Asia Conference" href="http://asia.siggraph.org"-->
+                <!--href="http://asia.siggraph.org"><img style="border: none;"-->
+                <!--src="http://media.siggraph.org/promo/siggraph-asia-badge.gif"-->
+            <!--src="http://media.siggraph.org/promo/siggraph-asia-badge.gif" alt="SIGGRAPH Asia" width="160"-->
+            <!--height="54" /></a></div>-->
+					</div>
+				</div>
+			</div>
+			<!--<div class="row mb-4 justify-content-center popover-delay">-->
+			<div class="row mb-4 justify-content-center">
+				<div class="col-auto mb-2"><a href="./files/DiffFR.pdf" class="btn btn-sm"><i class="fa-regular fa-file-lines"></i> PDF (15MB)</a></div>
+				<div class="col-auto mb-2"><a href="./files/DiffFR-compressed.pdf" class="btn btn-sm"><i class="fa-regular
+              fa-file-lines"></i> Low-res PDF (2MB)</a></div>
+				<!--<div class="col-auto mb-2"><a href="poster.pdf" class="btn btn-sm"><i class="fa-regular fa-image"></i> Poster</a></div>-->
+				<div class="col-auto mb-2"><a href="https://youtu.be/WyZz5GmhhIk?si=bTrMCKW3ghqCWRRf" class="btn btn-sm"><i class="fa-brands fa-youtube"></i> Video</a></div>
+				<!--<div class="col-auto mb-2"><a href="#" class="btn btn-sm"><i class="fa-brands fa-youtube"></i> Talk</a></div>-->
+				<!--<div class="col-auto mb-2"><a href="https://github.com/pielet/Codim-IPC/tree/master" class="btn btn-sm"><i class="fa-brands fa-github hover-icon"></i> Code</a></div>-->
+				<div class="col-auto mb-2"><a href="https://dl.acm.org/doi/10.1145/3618318" class="btn btn-sm"><i class="ai ai-acmdl"></i> Publisher</a></div>
+				<div class="col-auto mb-2"><a href="#bibtex" class="btn btn-sm" target="_self"><i class="fa-solid fa-paperclip"></i> BibTex</a></div>
+			</div>
+			<div class="row">
+				<div class="col-12" style="position: relative; top:0; left:0">
+					<img alt="teaser figure: flag post" class="img-fluid" id="teaser-img">
+					<!--<span class="teaser-title" style="position: absolute; left: 12%; top: 90%"><b>Forward simulation</b></span>-->
+					<!--<span class="teaser-title" style="position: absolute; left: 60%; top: 90%"><b>Cyclic animation</b></span>-->
+          <span class="teaser-title"><b> Figure 1. </b>
+           Gradient-based optimization results. The  stone skipping task with our differentiable SPH-based fluid-rigid coupling simulator. We optimize the initial linear and angular velocities of the stone to make it pass through the target red ring after bouncing.  
+          </span>
+				</div>
+			</div>
+			<hr>
+      <!-- ------------------------------------ TLDR -------------------------------------------->
+			<!--<div class="row">-->
+				<!--<div class="col-12">-->
+					<!--<h4 class="mb-3">TL;DR</h4>-->
+					<!--<p class="text-justify">-->
+          <!--A novel differentiable SPH-based fluid-rigid coupling simulator addressing the gradient explosion issues in -->
+          <!--naively differentiating DFSPH solvers.-->
+					<!--</p>-->
+				<!--</div>-->
+			<!--</div>-->
+			<!--<hr>-->
+
+      <!-- ------------------------------------ Abstract -------------------------------------------->
+			<div class="row">
+				<div class="col-12">
+					<h4 class="mb-3">Abstract</h4>
+					<p class="text-justify">
+          <b>1. Motivation: </b> Differentiable physics simulation has shown its efficacy in inverse design problems. Given the pervasiveness of the diverse interactions between fluids and solids in life, a differentiable simulator for the inverse design of the
+            motion of rigid objects in two-way fluid-rigid coupling is also demanded. 
+            <br> <br>
+            <b>2. Challenges: </b> There are two main challenges to develop a differentiable two-way fluid-solid coupling simulator for rigid body control tasks:  the ubiquitous, discontinuous contacts in fluid-solid interactions, and the high computational cost of gradient formulation due to the large number of degrees of freedom (DoF) of fluid dynamics. 
+            <br> <br>
+            <b>3. Contribuitons: </b>In this work, we propose a novel differentiable SPH-based two-way fluid-rigid coupling simulator to address these challenges. 
+            Our purpose is to provide a differentiable simulator for SPH which incorporates a unified representation for both fluids and solids using particles. 
+            However, 
+            naively differentiating the forward simulation of the particle system encounters gradient explosion issues. 
+            We investigate the instability in differentiating the SPH-based fluid-rigid coupling simulator and present a feasible gradient computation scheme to address its differentiability.  
+            In addition, we also propose an efficient method to compute the gradient of fluid-rigid coupling without incurring the high computational cost of differentiating the entire high-DoF fluid system. 
+            <br> <br>
+             <b>4. Results: </b>We show the efficacy, scalability, and extensibility of our method in various challenging rigid body control tasks with diverse fluid-rigid interactions and multi-rigid contacts, achieving up to an order of magnitude speedup in optimization compared to baseline methods in experiments.
+					</p>
+				</div>
+			</div>
+			<hr>
+
+      <!-- ------------------------------------ Video -------------------------------------------->
+			<div class="row">
+				<h4 class="mb-3">Video</h4>
+				<div class="col-12 text-center">
+					<!--<iframe src="https://www.youtube.com/embed/y-cW0uWe68s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>-->
+          <!--<iframe width="560" height="315" src="https://www.youtube.com/embed/WyZz5GmhhIk?si=OsGrtbn8_gRrnkGM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>-->
+          <iframe src="https://www.youtube.com/embed/WyZz5GmhhIk?si=OsGrtbn8_gRrnkGM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+				</div>
+			</div>
+			<hr>
+      <!-- ------------------------------------ Results -------------------------------------------->
+      <!--<div class="row">-->
+        <!--<h4 class="mb-3">Results</h4>-->
+         <!--<div class="col-md-6",  style="position: relative; top:0; left:0">-->
+            <!--<img src="./figs/bottle_result.png" alt="Your Image" >-->
+          <!--</div>-->
+          <!--<div class="col-md-6",  style="position: relative; top:0; left:0">-->
+            <!--[>[> Video goes here <]<]-->
+          <!--<iframe "https://www.youtube.com/embed/WyZz5GmhhIk?si=OsGrtbn8_gRrnkGM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>-->
+          <!--</div>-->
+      <!--</div>-->
+      <!--<hr>-->
+      <!-- ------------------------------------ Pre -------------------------------------------->
+			<div class="row">
+				<h4>Presentation</h4>
+				<div class="col-12">
+					Coming soon
+				</div>
+			</div>
+			<hr>
+      <!-- ------------------------------------ Code -------------------------------------------->
+			<div class="row">
+				<h4>Code</h4>
+				<div class="col-12">
+					Coming soon
+				</div>
+			</div>
+
+			<hr>
+      <!-- ------------------------------------ Paper -------------------------------------------->
+			<div class="row">
+				<h4>Paper</h4>
+				<div class="row mt-2 mb-4">
+					<div class="col-2">
+						<a href="./files/DiffFR.pdf"><img src="./figs/paper_cover.png" alt="Paper" class="layered-paper-big" style="width:80%"></a>
+					</div>
+					<div class="col-10">
+						<p>
+							Z. Li, Q. Xu, X. Ye, B, Ren, L. Liu<br>
+							<b>DiffFR: Differentiable SPH-based Fluid-Rigid Coupling for Rigid Body Control</b><br>
+							<!--<a href="http://computeranimation.org/program/">Symposium on Computer Animation, 2023</a>-->
+              <a href="https://asia.siggraph.org/2023/">ACM Transactions on Graphics (Proceedings of SIGGGRAPH Asia 2023)</a>
+						</p>
+						<a href="./files/DiffFR.pdf" class="btn btn-sm">PDF (15MB)</a>
+						<a href="./files/DiffFR-compressed.pdf" class="btn btn-sm">Low-res PDF (2MB)</a>
+					</div>
+				</div>
+				<div class="row mt-2 mb-4">
+					<div class="col-2">
+						<a href="./files/DiffFR-supplementary.pdf"><img src="./figs/sup_cover.png" alt="Paper" class="layered-paper-big" style="width:80%"></a>
+					</div>
+					<div class="col-10">
+						<p>
+							<!--Z. Li, Q. Xu, X. Ye, B, Ren, L. Liu<br>-->
+							<!--<b>DiffFR: Differentiable SPH-based Fluid-Rigid Coupling for Rigid Body Control</b><br>-->
+							<b>Supplementary</b><br>
+							<!--<a href="http://computeranimation.org/program/">Symposium on Computer Animation, 2023</a>-->
+              <!--<a href="https://asia.siggraph.org/2023/">ACM Transactions on Graphics (Proceedings of SIGGGRAPH Asia 2023)</a>-->
+						</p>
+						<a href="./files/DiffFR-supplementary.pdf" class="btn btn-sm">PDF (700KB)</a>
+					</div>
+				</div>
+			</div>
+			<hr>
+      <!-- ------------------------------------ Bib -------------------------------------------->
+			<div class="row mb-5">
+				<h4>BibTex</h4>
+				<div class="col-12 mt-1">
+					<pre id="bibtex"><code>@article{Li2023:DiffFR,
+          title = {DiffFR: Differentiable SPH-based Fluid-Rigid Coupling for Rigid Body Control}, 
+          author = {Zhehao Li, Qingyu Xu, Xiaohan Ye, Bo Ren and Ligang Liu},
+          journal = {{ACM Trans. Graph.},
+          year = {2023},
+          month = {Dec},
+          volume = {42},
+          number = {6},
+          numpages = {17},
+          url={https://doi.org/10.1145/3618318}
+          </code></pre>
+				</div>
+			</div>
+
+      <!-- ------------------------------------ footer -------------------------------------------->
+		<footer class="row">
+			<figcaption class="figure-caption text-center">
+        Copyright © 2023 <a href="https://zhehaoli1999.github.io">Zhehao Li</a>. Thanks for the template from <a href="http://shiyang-jia.com">Shiyang Xia</a><br>
+				Last update: 10/2023
+			</figcaption>
+		</footer>
+
+		<script src="./assets/script.js"></script>
+	</body>
+</html>
