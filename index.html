@@ -12,7 +12,7 @@
 		<link rel="stylesheet" href="./assets/style.css">
 		<link rel="icon" type="image/x-icon" href="./figs/duck_icon.png">
 
-		<title>DiffFR: Differentiable SPH-based Fluid-Rigid Coupling for Rigid Body Control</title>
+    <title>DiffFR: Differentiable SPH-based Fluid-Rigid Coupling for Rigid Body Control</title>
 
 		<!-- Global site tag (gtag.js) - Google Analytics -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23662412-4"></script>
@@ -103,7 +103,7 @@
             <br> <br>
             <b>2. Challenges: </b> There are two main challenges to develop a differentiable two-way fluid-solid coupling simulator for rigid body control tasks:  the ubiquitous, discontinuous contacts in fluid-solid interactions, and the high computational cost of gradient formulation due to the large number of degrees of freedom (DoF) of fluid dynamics. 
             <br> <br>
-            <b>3. Contribuitons: </b>In this work, we propose a novel differentiable SPH-based two-way fluid-rigid coupling simulator to address these challenges. 
+            <b>3. Contributions: </b>In this work, we propose a novel differentiable SPH-based two-way fluid-rigid coupling simulator to address these challenges. 
             Our purpose is to provide a differentiable simulator for SPH which incorporates a unified representation for both fluids and solids using particles. 
             However, 
             naively differentiating the forward simulation of the particle system encounters gradient explosion issues. 
@@ -138,6 +138,110 @@
           <!--</div>-->
       <!--</div>-->
       <!--<hr>-->
+			<div class="row">
+				<h4 class="mb-3">Result 1. Rigid Body Trajectory Optimization</h4>
+				<h5 class="mb-3">1.1 Stone Skipping</h5>
+				<div class="col-12 text-justify">
+            Optimize the releasing linear and angular velocity of the stone to make it pass the target red ring at the
+            target time after bouncing.
+            <br>
+            238507 particles, 713103 DoFs, 6 design parameters.
+          </p>
+          <!--<p>Stone Skipping</p>-->
+					<!--<iframe src="https://www.youtube.com/embed/y-cW0uWe68s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>-->
+          <!--<iframe width="560" height="315" src="https://www.youtube.com/embed/WyZz5GmhhIk?si=OsGrtbn8_gRrnkGM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>-->
+          <iframe src="https://www.youtube.com/embed/GgsEKLyUMZI?si=VQEmvkd4VYPUKQ0p" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+				</div>
+			</div>
+      <br>
+
+			<div class="row">
+				<h5 class="mb-3">1.2 Water Rafting</h5>
+				<div class="col-12 text-justify">
+            Optimize the releasing linear and angular velocity of the bunny to reach the target position and pose 
+            at the target time after riding on the river flow. 
+            <br>
+            107004 particles, 315468 DoFs, 5 design parameters.
+          </p>
+          <!--<p>Water Rafting</p>-->
+					<!--<iframe src="https://www.youtube.com/embed/y-cW0uWe68s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>-->
+          <!--<iframe width="560" height="315" src="https://www.youtube.com/embed/WyZz5GmhhIk?si=OsGrtbn8_gRrnkGM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>-->
+          <iframe src="https://www.youtube.com/embed/Sx1CZP4FyyE?si=kdrUeBg7RczhbJLT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+				</div>
+			</div>
+      <br>
+
+			<div class="row">
+				<h5 class="mb-3">1.3 High Diving</h5>
+				<div class="col-12 text-justify">
+            Optimize the releasing angular velocity of the duck to reach the target pose at the target time after rolling in the
+            pool. 
+            <br>
+            156122 particles, 468372 DoFs, 3 design parameters.
+          <!--<p>High Diving</p>-->
+					<!--<iframe src="https://www.youtube.com/embed/y-cW0uWe68s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>-->
+          <!--<iframe width="560" height="315" src="https://www.youtube.com/embed/WyZz5GmhhIk?si=OsGrtbn8_gRrnkGM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>-->
+          <iframe src="https://www.youtube.com/embed/3Nhx0oEd6Ng?si=GoZQqWCf_qeOoSPD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+				</div>
+			</div>
+      <br>
+
+
+			<div class="row">
+				<h5 class="mb-3">1.4 Bottle Flip Challenge</h5>
+				<div class="col-12 text-justify">
+          Stage 1: Optimize the releasing linear and angular velocity of the bottle  
+          to reach the target position near above the table and a 360° rotation.  
+          Stage 2: Fine tune the stage-1 result to make the bottle stop and stand stably on the table after rigid-rigid
+          contact. 
+          <br> 27360 particles, 39942 DoFs, 6 design parameters. 
+          <!--<p>Bottle Flip Challenge</p>-->
+					<!--<iframe src="https://www.youtube.com/embed/y-cW0uWe68s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>-->
+          <!--<iframe width="560" height="315" src="https://www.youtube.com/embed/WyZz5GmhhIk?si=OsGrtbn8_gRrnkGM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>-->
+          <iframe src="https://www.youtube.com/embed/q4apLFQlz1g?si=ukOjBbWp6pJ_a4no" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+				</div>
+			</div>
+      <br>
+
+			<div class="row">
+				<h5  class="mb-3">1.5 On-water Billiards</h5>
+				<div class="col-12 text-justify">
+          Let the water pool be your billiards table! Optimize the initial linear and angular velocity of the yellow ball to make the red ball reach 
+          the target position at the target time after collision. 
+          <br>
+          90217 particles, 262053 DoFs, 6 design parameters.
+          <!--<p>On-water Billiards</p>-->
+					<!--<iframe src="https://www.youtube.com/embed/y-cW0uWe68s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>-->
+          <!--<iframe width="560" height="315" src="https://www.youtube.com/embed/WyZz5GmhhIk?si=OsGrtbn8_gRrnkGM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>-->
+          <iframe src="https://www.youtube.com/embed/Y4CDy3CvMSc?si=Tl-2gHqS5LA3wpku" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+				</div>
+			</div>
+      <br>
+
+			<div class="row">
+				<h4 class="mb-3">Result 2. Self-supervised Learning of Water Bottle Flipping Control Policy</h4>
+				<div class="col-12 text-justify">
+        We integrate our differentiable fluid-rigid coupling simulator into a neural network bottle flip controller, which facilitates the training to be in an end-to-end manner with the gradient information directly from the simulator.
+        
+          <!--<p>Learning-based Bottle Flip Controller</p>-->
+					<!--<iframe src="https://www.youtube.com/embed/y-cW0uWe68s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>-->
+          <!--<iframe width="560" height="315" src="https://www.youtube.com/embed/WyZz5GmhhIk?si=OsGrtbn8_gRrnkGM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>-->
+          <iframe src="https://www.youtube.com/embed/DEkhroZ0Vhk?si=4bhzhJreKu96PlM9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+				</div>
+			</div>
+      <br>
+
+			<div class="row">
+				<h4 class="mb-3">Result 3. Closed-loop On-water Inverted Pendulum Robot Controller</h4>
+				<div class="col-12 text-justify">
+          Finally, we train a closed-loop controller that keeps the pole balanced on the undulating water surface disturbed by two baffles, where the controller applies appropriate forces on the cart at regular intervals. 
+          <!--<p>Learning-based On-water Inverted Pendulum Robot</p>-->
+					<!--<iframe src="https://www.youtube.com/embed/y-cW0uWe68s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>-->
+          <!--<iframe width="560" height="315" src="https://www.youtube.com/embed/WyZz5GmhhIk?si=OsGrtbn8_gRrnkGM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>-->
+          <iframe src="https://www.youtube.com/embed/yzKTyHOcPt8?si=4S43LTGwsPOgETU2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+				</div>
+			</div>
+			<hr>
       <!-- ------------------------------------ Pre -------------------------------------------->
 			<div class="row">
 				<h4>Presentation</h4>
@@ -150,6 +254,7 @@
 			<div class="row">
 				<h4>Code</h4>
 				<div class="col-12">
+        <div class="col-auto mb-2"><a href="https://github.com/zhehaoli1999/DiffFR" class="btn btn-sm"><i class="fa-brands fa-github hover-icon"></i> Code</a></div>
 					Coming soon
 				</div>
 			</div>
