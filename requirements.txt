@@ -1,0 +1,8 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+
+numpy-quaternion
+torch==1.13.1+cpu
+torchvision==0.14.1+cpu
+torchaudio==0.13.1+cpu
+tensorboard
+nevergrad==0.6.0

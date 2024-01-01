@@ -1,0 +1,134 @@
+{
+	"Configuration": 
+	{
+		"pause": true,
+		"sim2D": true, 
+		"particleRadius": 0.025,
+		"colorMapType": 1,
+		"numberOfStepsPerRenderUpdate": 4,
+		"density0": 1000, 
+		"simulationMethod": 5,
+		"gravitation": [0,-9.8,0], 
+		"cflMethod": 1, 
+		"cflFactor": 1,
+		"cflMaxTimeStepSize": 0.001,
+		"maxIterations": 100,
+		"maxError": 0.1,
+		"maxIterationsV": 100,
+		"maxErrorV": 0.1,		
+		"stiffness": 50000,
+		"exponent": 7,
+		"velocityUpdateMethod": 0,
+		"enableDivergenceSolver": true,
+		"boundaryHandlingMethod": 0,
+    "targetTime":100000
+	},
+	"RigidBodies": [
+		{
+			"geometryFile": "../models/UnitBox.obj",
+			"translation": [0, 2, 0],
+			"rotationAxis": [1, 0, 0],
+			"rotationAngle": 0,
+			"scale": [8, 4, 1],
+			"color": [0.1, 0.4, 0.6, 1.0], 
+			"isDynamic": false,
+			"isWall": true,
+			"mapInvert": true, 
+			"mapThickness": 0.0,
+			"mapResolution": [30,30,20]
+		},
+    {
+			"geometryFile": "../models/UnitBox.obj",
+      "density":50,
+		  "translation": [0, 1.65, 0],
+			"rotationAxis": [0, 0, 1],
+		  "rotationAngle": 180,
+			"scale": [0.05, 0.5, 0.1],
+			"color": [0.1, 0.4, 0.6, 1.0], 
+			"isDynamic": true,
+			"isWall": false,
+			"mapInvert": false, 
+			"mapThickness": 0.0,
+			"mapResolution": [30,30,20],
+      "targetX":[0, 1.65, 0], 
+			"targetAngleInDegree": [0, 0, 0],
+			"showTargetMode": 5,
+			"targetScale": [1.0, 1.0, 1.0]
+		},
+		{
+			"geometryFile": "../models/UnitBox.obj",
+      		"density":1500,
+			"translation": [0, 1.15, 0],
+			"rotationAxis": [1, 0, 0],
+			"rotationAngle": 0,
+			"scale": [0.9, 0.6, 0.1],
+			"color": [0.1, 0.4, 0.6, 1.0], 
+			"isDynamic": true,
+			"isWall": false,
+			"mapInvert": false, 
+			"mapThickness": 0.0,
+			"mapResolution": [30,30,20],
+      "target_x":[0, 1.1, 0] 
+		},
+
+    {
+			"geometryFile": "../models/UnitBox.obj",
+			"translation": [-4.35, 2,0],
+			"rotationAxis": [1, 0, 0],
+			"rotationAngle": 0,
+			"scale": [0.5, 4, 0.1],
+			"color": [0.1, 0.4, 0.6, 1.0], 
+			"isDynamic": false,
+			"isAnimated": true,
+			"isWall": false,
+			"restitution" : 0.6,
+			"friction" : 0.0,
+			"invertSDF": true,
+			"mapInvert": true, 
+			"mapThickness": 0.0,
+			"mapResolution": [30,40,15]
+		},
+    {
+			"geometryFile": "../models/UnitBox.obj",
+			"translation": [4.35,2,0],
+			"rotationAxis": [1, 0, 0],
+			"rotationAngle": 0,
+			"scale": [0.5, 4, 0.1],
+			"color": [0.1, 0.4, 0.6, 1.0], 
+			"isDynamic": false,
+			"isAnimated": true,
+			"isWall": false,
+			"restitution" : 0.6,
+			"friction" : 0.0,
+			"invertSDF": true,
+			"mapInvert": true, 
+			"mapThickness": 0.0,
+			"mapResolution": [30,40,15]
+		}
+  ],
+	"ArticulatedSystems": [
+		{
+			"rigidIndices" : [1, 2],
+			"invStiffness" : 0.0,
+			"joints":[
+				{
+					"rigidIndex1" : 0,
+					"rigidIndex2" : 1,
+					"jointRelativePosition" : [0, 0.9, 0.0]
+				}
+			]
+		}
+	],
+	"FluidBlocks": [
+		{
+			"denseMode": 0,
+			"start": [-2.5, 0.0, -1],
+			"end": [2.5, 1.5, 1],
+			"translation": [0.0, 0.0, 0.0],
+			"scale": [1, 1, 1]
+		}
+	]	
+}
+
+
+

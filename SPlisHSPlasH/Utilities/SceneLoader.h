@@ -1,0 +1,261 @@
+#ifndef __SceneLoader_h__
+#define __SceneLoader_h__
+
+#include "SPlisHSPlasH/Common.h"
+#include "extern/json/json.hpp"
+#include <vector>
+#include "ParameterObject.h"
+
+namespace Utilities
+{
+	/** \brief Importer of SPlisHSPlasH scene files. 
+	*/
+	class SceneLoader
+	{
+	protected:
+		nlohmann::json m_jsonData;
+
+		void readParameterObject(nlohmann::json& config, GenParam::ParameterObject* paramObj);
+
+	public:
+		/** \brief Struct for an AABB */
+		struct Box
+		{
+			Vector3r m_minX;
+			Vector3r m_maxX;
+		};
+
+		/** \brief Struct to store a boundary object */
+		struct BoundaryData
+		{
+			std::string samplesFile;
+			std::string meshFile;
+			Vector3r translation;
+			Matrix3r rotation;
+			Vector3r scale;
+			Real density;
+			bool dynamic;
+			bool isWall;
+			Eigen::Matrix<float, 4, 1, Eigen::DontAlign> color;
+			void *rigidBody;
+      //bool isConsiderRRContact;
+
+			std::string mapFile;
+			bool mapInvert;
+			Real mapThickness;	
+			Eigen::Matrix<unsigned int, 3, 1, Eigen::DontAlign> mapResolution;
+			unsigned int samplingMode;
+			bool isAnimated;
+
+			unsigned int showTargetMode;
+			Vector3r targetScale;
+
+			Eigen::Matrix<Real, 3, 1, Eigen::DontAlign> target_x;
+			Eigen::Matrix<Real, 3, 1, Eigen::DontAlign> target_angle_in_degree;
+			Eigen::Matrix<Real, 3, 1, Eigen::DontAlign> init_velocity;
+			Eigen::Matrix<Real, 3, 1, Eigen::DontAlign> init_angular_velocity;
+		};
+
+		struct ArticulatedSystemData
+		{
+			struct JointData
+			{
+				unsigned int rigidIndex1;
+				unsigned int rigidIndex2;
+				Vector3r jointPoint;
+        bool isActuator;
+			};
+			std::vector<unsigned int> rigidBodyIndices;
+			std::vector<JointData> joints;
+			Real inv_stiffness;
+		};
+
+		/** \brief Struct to store a fluid object */
+		struct FluidData
+		{
+			std::string id;
+			std::string samplesFile;
+			std::string visMeshFile;
+			Vector3r translation;
+			Matrix3r rotation;
+			Vector3r scale;
+			Vector3r initialVelocity;
+			Vector3r initialAngularVelocity;
+			unsigned char mode;
+			bool invert;
+			std::array<unsigned int, 3> resolutionSDF;
+		};
+
+		/** \brief Struct to store a fluid block */
+		struct FluidBlock
+		{
+			std::string id;
+			std::string visMeshFile;
+			Box box;
+			unsigned char mode;
+			Vector3r initialVelocity;
+			Vector3r initialAngularVelocity;
+		};
+
+		/** \brief Struct to store an emitter object */
+		struct EmitterData
+		{
+			std::string id;
+			unsigned int width;
+			unsigned int height;
+			Vector3r x;
+			Real velocity; // emission velocity
+			Matrix3r rotation;
+			Real emitStartTime;
+			Real emitEndTime;
+			unsigned int type;
+		};
+
+		/** \brief Struct to store an animation field object
+		 */
+		struct AnimationFieldData
+		{
+			std::string particleFieldName;
+			std::string expression[3];
+			unsigned int shapeType;
+			Vector3r x;
+			Matrix3r rotation;
+			Vector3r scale; 
+			Real startTime;
+			Real endTime;
+		};
+
+		/** \brief Struct to store particle coloring information */
+		struct MaterialData
+		{
+			std::string id;
+			std::string colorField;
+			unsigned int colorMapType;
+			Real minVal;
+			Real maxVal;
+			unsigned int maxEmitterParticles;
+			bool emitterReuseParticles;
+			Vector3r emitterBoxMin;
+			Vector3r emitterBoxMax;
+		};
+
+		/** \brief Struct to store scene information */
+		struct Scene
+		{
+			std::vector<BoundaryData*> boundaryModels;
+			std::vector<ArticulatedSystemData *> articulatedSystems;
+			std::vector<FluidData *> fluidModels;
+			std::vector<FluidBlock*> fluidBlocks;
+			std::vector<EmitterData*> emitters;
+			std::vector<AnimationFieldData*> animatedFields;
+			std::vector<MaterialData*> materials;
+			Real particleRadius;
+			bool sim2D;
+			Real timeStepSize;
+			Vector3r camPosition;
+			Vector3r camLookat;
+      bool useRigidContactSolver; 
+      bool useRigidGradientManager; 
+      bool useReleaseRigidBodyMode; 
+      Real rigidContactGamma; 
+      Real rigidContactFrictionCoeff; 
+      Real rigidContactBeta; 
+      Real rigidContactSupportRadiusFactor; 
+
+      Real targetTime; // For diffsim optimization 
+      Real uniformAccelerateRBTime;
+
+      unsigned int gradientMode;
+		};
+
+		void readScene(const char *fileName, Scene &scene);
+
+		template <typename T>
+		bool readValue(const nlohmann::json &j, T &v)
+		{
+			if (j.is_null())
+				return false;
+
+			v = j.get<T>();
+			return true;
+		}
+
+		template <typename T, int size>
+		bool readVector(const nlohmann::json &j, Eigen::Matrix<T, size, 1, Eigen::DontAlign> &vec)
+		{
+			if (j.is_null())
+				return false;
+
+			std::vector<T> values = j.get<std::vector<T>>();
+			for (unsigned int i = 0; i < values.size(); i++)
+				vec[i] = values[i];
+			return true;
+		}
+
+		template <typename T>
+		bool readValue(const std::string &section, const std::string &key, T &v)
+		{
+			if (m_jsonData.find(section) != m_jsonData.end())
+			{
+				nlohmann::json j = m_jsonData[section];
+				if (j.is_null())
+					return false;
+
+				nlohmann::json j2 = j[key];
+				if (j2.is_null())
+					return false;
+
+				v = j2.get<T>();
+				return true;
+			}
+			return false;
+		}
+
+		bool hasValue(const std::string& section, const std::string& key)
+		{
+			if (m_jsonData.find(section) != m_jsonData.end())
+			{
+				nlohmann::json j = m_jsonData[section];
+				if (j.is_null())
+					return false;
+
+				nlohmann::json j2 = j[key];
+				if (j2.is_null())
+					return false;
+
+				return true;
+			}
+			return false;
+		}
+
+		template <typename T, int size>
+		bool readVector(const std::string &section, const std::string &key, Eigen::Matrix<T, size, 1, Eigen::DontAlign> &vec)
+		{
+			if (m_jsonData.find(section) != m_jsonData.end())
+			{
+				nlohmann::json j = m_jsonData[section];
+				if (j.is_null())
+					return false;
+
+				nlohmann::json j2 = j[key];
+				if (j2.is_null())
+					return false;
+
+				std::vector<T> values = j2.get<std::vector<T>>();
+				for (unsigned int i = 0; i < values.size(); i++)
+					vec[i] = values[i];
+				return true;
+			}
+			return false;
+		}
+
+		void readMaterialParameterObject(const std::string& key, GenParam::ParameterObject* paramObj);
+		void readParameterObject(const std::string &key, GenParam::ParameterObject *paramObj);
+	};
+
+	template <>
+	bool SceneLoader::readValue<bool>(const nlohmann::json &j, bool &v);
+
+}
+
+#endif

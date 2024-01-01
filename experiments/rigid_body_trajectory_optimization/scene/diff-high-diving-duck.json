@@ -1,0 +1,152 @@
+{	"Configuration": 
+	{
+		"particleRadius": 0.025,
+		"numberOfStepsPerRenderUpdate": 2,
+		"density0": 1000, 
+		"simulationMethod": 5,
+		"gravitation": [0,-9.81,0], 
+		"cflMethod": 1, 
+		"cflFactor": 0.5,
+		"cflMaxTimeStepSize": 0.005,
+		"maxIterations": 100,
+		"maxError": 0.05,
+		"maxIterationsV": 100,
+		"maxErrorV": 0.1,		
+		"stiffness": 50000,
+		"exponent": 7,
+		"velocityUpdateMethod": 0,
+		"enableDivergenceSolver": true,
+		"boundaryHandlingMethod": 0,
+    "targetTime":2.3,
+    "uniformAccelerateRBTime": 0.00
+  },
+  "Materials": [
+		{
+			"id": "Fluid",
+			"maxEmitterParticles": 35000,
+			"surfaceTension": 0.2,
+			"surfaceTensionBoundary": 0.0,
+			"surfaceTensionMethod":2	
+		}
+	],
+	"Simulation": 
+	{
+		"timeStepSize": 0.005,
+		"maxIter" : 5,
+		"maxIterVel" : 5,
+		"velocityUpdateMethod" : 0,
+		"contactTolerance": 0.06,
+		"tetModelSimulationMethod": 2,
+		"triangleModelSimulationMethod": 2,
+		"triangleModelBendingMethod": 2,
+		"contactStiffnessRigidBody" : 1.0,
+		"contactStiffnessParticleRigidBody": 100.0,
+		"cloth_stiffness": 1.0,
+		"cloth_bendingStiffness": 0.005,
+		"cloth_xxStiffness": 1.0,
+		"cloth_yyStiffness": 1.0,
+		"cloth_xyStiffness": 1.0,
+		"cloth_xyPoissonRatio": 0.3,
+		"cloth_yxPoissonRatio": 0.3,
+		"cloth_normalizeStretch": 0,
+		"cloth_normalizeShear": 0, 
+		"solid_stiffness": 1.0,
+		"solid_poissonRatio": 0.2,
+		"solid_normalizeStretch": 0,
+		"solid_normalizeShear": 0
+	},
+	"RigidBodies": [
+		{
+			"id": 1,
+			"geometryFile": "../models/slide.obj",
+			"translation": [-6.1, 2.7, 0],
+			"rotationAxis": [0, 0, -1],
+			"rotationAngle": 0,
+			"scale": [0.6, 1, 4],
+			"color": [0.1, 0.4, 0.6, 1.0], 
+			"isDynamic": false,
+			"isWall": true
+		},
+		{
+			"id": 2,
+			"geometryFile": "../models/rubber_duck.obj",
+			"isDynamic": 1,
+			"density": 200, 
+			"translation": [-4.8,5.6,0],
+			"rotationAxis": [0, 1, 0],
+			"rotationAngle": -270,
+			"scale": [0.5, 0.5, 0.5],
+			"velocity": [0,0,0],
+			"color": [0.3, 0.5, 0.8, 1.0], 
+			"collisionObjectType": 1,
+			"collisionObjectScale": [0.2, 0.2, 0.2],
+			"mapInvert": false, 
+			"mapThickness": 0.0,
+			"mapResolution": [20,20,20],
+			"initVelocity": [0, 0, 0],
+			"initAngularVelocity": [0, 0, 0],
+			"targetX": [2.5, 1.0, -0.1],
+			"targetAngleInDegree": [0, 180, 0],
+			"showTargetMode": 5,
+			"targetScale": [1.0, 1.0, 1.0]
+		},
+   {
+			"id": 3,
+			"geometryFile": "../models/pool.obj",
+			"translation": [2,0,0],
+			"rotationAxis": [0, 0, 1],
+			"rotationAngle": 0,
+			"scale": [0.3,0.3,0.3],
+			"color": [0.1, 0.4, 0.6, 1.0], 
+			"isDynamic": false,
+			"isWall": true
+		},
+    {
+			"id": 3,
+			"geometryFile": "../models/4-face-box.obj",
+			"translation": [-5.4,4.5,0],
+			"rotationAxis": [0, 0, 1],
+			"rotationAngle": 0,
+			"scale": [3,2,1.7],
+			"color": [0.1, 0.4, 0.6, 1.0], 
+			"isDynamic": false,
+			"isWall": true
+		}	,
+    {
+			"id": 5,
+			"geometryFile": "../models/UnitBox.obj",
+			"translation": [1,-0.11,0],
+			"rotationAxis": [0, 0, 1],
+			"rotationAngle": 0,
+			"scale": [10,0.06,10],
+			"color": [0.1, 0.4, 0.6, 1.0], 
+			"isDynamic": false,
+			"isWall": true
+		}	
+
+	],	"FluidBlocks": [
+        {
+			"denseMode": 0,
+			"start": [0.1, 0.1, -0.8],
+			"end": [3.5, 3, 0.8],
+			"translation": [0.0, 0.0, 0.0],
+			"scale": [1,1,1]
+		}
+  ],
+	"Emitters":
+	[
+		{
+			"width": 26, 
+        	"height": 20, 
+        	"translation": [-6.5,4.8,0.0],
+        	"rotationAxis": [0, 0, 1],
+        	"rotationAngle": -0.0,
+        	"velocity": 5,
+          "type": 0,
+			    "emitEndTime": 2
+		}
+	]
+}
+
+
+
