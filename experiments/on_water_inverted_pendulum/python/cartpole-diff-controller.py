@@ -446,6 +446,7 @@ def main():
     # -------- testing -------------
     elif args.test != "":
         simulator_base.initSimulation()
+        sim = sph.Simulation.getCurrent()
         timestep = sim.getTimeStep()
         timestep.add_log(f"{green_head} ================ testing ================ {color_tail}")
         if args.test != "init":

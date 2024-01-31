@@ -64,25 +64,21 @@ For gradient-based optimization (ours), use `gradient-based-optimize.py`. For gr
 
 + bottle flipping
 ```
-python gradient-based-optimize.py --scene=../scene/diff-bottle-model.json --state=../state/bottle_flip/state_54.bin  --load-fluid
--pos --taskType=bottle-flip
+python gradient-based-optimize.py --scene=../scene/diff-bottle-model.json --state=../state/bottle_flip/state_54.bin  --load-fluid-pos --taskType=bottle-flip
 ```
 + stone skipping
 ```
-python gradient-based-optimize.py --scene=../scene/diff-stone-skipping.json --state=../state/stone_skipping/state_18.bin  --load-fluid
--pos --taskType=stone-skipping
+python gradient-based-optimize.py --scene=../scene/diff-stone-skipping.json --state=../state/stone_skipping/state_18.bin  --load-fluid-pos --taskType=stone-skipping
 ```
 
 + water rafting
 ```
-python gradient-based-optimize.py --scene=../scene/diff-dambreak-bunny.json --state=../state/water_rafting/state_130  --load-fluid
--pos-and-vel --taskType=water-rafting 
+python gradient-based-optimize.py --scene=../scene/diff-dambreak-bunny.json --state=../state/water_rafting/state_130  --load-fluid-pos-and-vel --taskType=water-rafting 
 ```
 
 + high diving
 ```
-python gradient-based-optimize.py --scene=../scene/diff-high-diving-duck.json --state=../state/high_diving/state_98.bin   --load-fluid
--pos --taskType=high-diving
+python gradient-based-optimize.py --scene=../scene/diff-high-diving-duck.json --state=../state/high_diving/state_98.bin   --load-fluid-pos --taskType=high-diving
 ```
 
 + on-water billiards
@@ -109,7 +105,7 @@ python cartpole-diff-controller.py --scene=../scene/cartpole-diff-controller.jso
 ```
 Test: 
 ```
-python cartpole-diff-controller.py --scene=../scene/cartpole-diff-controller.json --state=../state/state_0.879992.bin --load-fluid-pos --test=../saved_models/success8s-2023-01-14-23:07:05-cartpole-epoch6.pth`
+python cartpole-diff-controller.py --scene=../scene/cartpole-diff-controller.json --state=../state/state_0.879992.bin --load-fluid-pos --test=../saved_models/success8s-2023-01-14-23-07-05-cartpole-epoch6.pth
 ```
 ### 4.4. Other comparison & ablation experiments 
 
