@@ -73,7 +73,7 @@ python gradient-based-optimize.py --scene=../scene/diff-stone-skipping.json --st
 
 + water rafting
 ```
-python gradient-based-optimize.py --scene=../scene/diff-dambreak-bunny.json --state=../state/water_rafting/state_130  --load-fluid-pos-and-vel --taskType=water-rafting 
+python gradient-based-optimize.py --scene=../scene/diff-water-rafting-bunny.json --state=../state/water_rafting/state_130  --load-fluid-pos-and-vel --taskType=water-rafting 
 ```
 
 + high diving
